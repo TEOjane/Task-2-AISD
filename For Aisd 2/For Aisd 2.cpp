@@ -2,14 +2,13 @@
 #include <iomanip>
 #include <math.h>
 #include <string>
-using namespace std;
 
 struct WrongIndexDiv {
-    string err = "delenie na 0";
+    std::string err = "delenie na 0";
 };
 
 struct WrongIndexException {
-    string err = " wrong index ";
+    std::string err = " wrong index ";
 };
 
 struct Ceil {
@@ -50,7 +49,7 @@ public:
         for (int i = 0; i < this->capacity; i++)
         {
             this->ceils[i].index = temp;
-            cin >> this->ceils[i].number;
+            std::cin >> this->ceils[i].number;
             temp++;
         }
 
@@ -171,9 +170,9 @@ public:
     void Print()
     {
         for (int i = 0; i < this->capacity; i++)
-            cout << this->GetNumberOfCeil(i) << " ";
+            std::cout << this->GetNumberOfCeil(i) << " ";
 
-        cout << endl;
+        std::cout << std::endl;
     }
 
 };
@@ -182,7 +181,7 @@ int main()
 {
     const int n = 2;
     int first = 0, last = 0;
-    cin >> first >> last;
+    std::cin >> first >> last;
     int k = abs(last - first) + 1;
 
     Array arr1 = Array(k);
@@ -195,47 +194,47 @@ int main()
     arr2.InputData(temp);
 
     int constanta = 0;
-    cin >> constanta;
+    std::cin >> constanta;
 
-    cout << "Array1= ";
+    std::cout << "Array1= ";
     arr1.Print();
-    cout << "Array1+const= ";
+    std::cout << "Array1+const= ";
     arr1.PlusConst(constanta).Print();
-    cout << "Array1*const= ";
+    std::cout << "Array1*const= ";
     arr1.MultConst(constanta).Print();
 
-    cout << "Array2= ";
+    std::cout << "Array2= ";
     arr2.Print();
-    cout << "Array2+const= ";
+    std::cout << "Array2+const= ";
     arr2.PlusConst(constanta).Print();
-    cout << "Array2*const= ";
+    std::cout << "Array2*const= ";
     arr2.MultConst(constanta).Print();
 
-    cout << "summa= ";
+    std::cout << "summa= ";
     Array sumArr = arr1 + arr2;
     sumArr.Print();
-    cout << "raznost= ";
+    std::cout << "raznost= ";
     Array diffArr = arr1 - arr2;
     diffArr.Print();
-    cout << "proizv = ";
+    std::cout << "proizv = ";
     Array multArr = arr1 * arr2;
     multArr.Print();
 
     try
     {
         Array divArray = arr1 / arr2;
-        cout << "delenie= ";
+        std::cout << "delenie= ";
         divArray.Print();
     }
     catch (const WrongIndexDiv& ex) {
-        cout << ex.err << endl;
+        std::cout << ex.err << std::endl;
     }
 
     int m, searchIndex;
-    cin >> m;
+    std::cin >> m;
     while (m != 0)
     {
-        cin >> searchIndex;
+        std::cin >> searchIndex;
 
         try
         {
@@ -250,13 +249,13 @@ int main()
                 result = arr2.SearchIndex(searchIndex);
             }
 
-            cout << "Array" << m << "[" << searchIndex << "] = " << result << endl;
+            std::cout << "Array" << m << "[" << searchIndex << "] = " << result << std::endl;
         }
         catch(const WrongIndexException& ex)
         {
-            cout << "Array" << m << ex.err << searchIndex << endl;
+            std::cout << "Array" << m << ex.err << searchIndex << std::endl;
         }
 
-        cin >> m;  
+        std::cin >> m;
     }
 }
